@@ -11,8 +11,18 @@ import { useState } from 'react'
 // of the session
 //
 //Replace this function with the TODO described above
-function userAuthentication() {
-    return null
+function useAuthentication(initialToken:string) {
+    const [token,setToken] = useState(()=>{
+    	const t = localStorage.getItem('token') || initialToken
+    	localStorage.setItem('token',t);
+    	return t;
+    })
+
+    const logout = function(){
+    	localStorage.setItem('token','')
+    	setToken('')
+    }
+    return [logout,token]
 }
 
-export default userAuthentication
+export default useAuthentication
