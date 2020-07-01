@@ -12,7 +12,9 @@ import { useState } from 'react'
 //
 //Replace this function with the TODO described above
 function userAuthentication() {
-    return null
+    const token = sessionStorage.getItem('token');
+
+  return token;
 }
 
 export default userAuthentication
