@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import App from './components/App'
 import EmployeeProvider from './contexts/Employees'
 
-
 ReactDOM.render(
   <React.StrictMode>
     <EmployeeProvider>
@@ -11,4 +10,4 @@ ReactDOM.render(
     </EmployeeProvider>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
