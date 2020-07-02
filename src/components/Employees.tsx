@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Employee } from '../contexts/Employees'
 
-const Employees = ({ value }: any) => {
+const Employees = ({ data }: any) => {
   const [employees, setEmployees] = useState([])
 
   useEffect(() => {
-    if (value.length > 0) {
-      setEmployees(value)
+    if (data.length > 0) {
+      setEmployees(data)
     }
-  }, [value])
+  }, [data])
 
   const sortEmployees = () => {
     const employeesUpdated = [...employees].sort((item1: Employee, item2: Employee) => {
@@ -23,7 +23,7 @@ const Employees = ({ value }: any) => {
       return 0
     })
 
-    setEmployees(employeesUpdated);
+    setEmployees(employeesUpdated)
   }
 
   return (

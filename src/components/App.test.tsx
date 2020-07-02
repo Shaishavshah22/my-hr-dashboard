@@ -8,6 +8,15 @@ test('renders learn react link', () => {
     expect(linkElement).toBeInTheDocument()
 })
 
+test('renders token and logout button', () => {
+    const { getByText } = render(<App />)
+    const tokenEl = getByText(/Token:/i)
+    const logoutBtnEl = getByText(/Logout/i)
+    expect(tokenEl).toBeInTheDocument()
+    expect(logoutBtnEl).toBeInTheDocument()
+})
+
+
 //TODO: using the '@testing-library/react' package, create additional unit test
 // that test components of the exercises that you've implemented
 //
