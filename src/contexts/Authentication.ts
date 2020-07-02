@@ -12,18 +12,18 @@ import { useState, useEffect } from 'react'
 //
 //Replace this function with the TODO described above
 function useAuthentication() {
-    const [token, setToken] = useState('');
+  const [token, setToken] = useState('')
 
-    useEffect(() => {
-        setToken(sessionStorage.getItem('token') || '')
-    }, [])
+  useEffect(() => {
+    setToken(sessionStorage.getItem('token') || '')
+  }, [])
 
-    const logout = () => {
-        sessionStorage.removeItem('token');
-        setToken('');
-    }
+  const logout = () => {
+    sessionStorage.removeItem('token')
+    setToken('')
+  }
 
-  return [token, logout];
+  return [token, logout]
 }
 
 export default useAuthentication

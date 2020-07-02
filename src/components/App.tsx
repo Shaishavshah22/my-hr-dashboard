@@ -27,7 +27,7 @@ const App: React.FunctionComponent = () => {
 
   return (
     <div style={rootStyle}>
-      <h3>Active User</h3>      
+      <h3>Active User</h3>
       {/*
         TODO: display the found tokenized identity from your custom hook
       */}
