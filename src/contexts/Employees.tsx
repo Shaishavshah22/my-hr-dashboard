@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useMemo, useState } from 'react'
 import fetch from 'node-fetch' //TODO: install the package and its type definitions
-import Employees from '../components/Employees'
 
 export interface Employee {
   id: string
@@ -11,14 +10,13 @@ export interface Employee {
 }
 
 interface EmployeeContextState {
-  employees: Employee[],
-  setEmployees?: Function
+  employees: Employee[]
 }
 
-export const EmployeeContext = createContext<EmployeeContextState>({ employees: [], setEmployees: () => {}})
+export const EmployeeContext = createContext<EmployeeContextState>({ employees: [] })
 
 const EmployeeProvider: React.FunctionComponent<any> = props => {
-  const [employees, setEmployees] = useState<EmployeeContextState['employees']>([]);
+  const [employees, setEmployees] = useState<EmployeeContextState['employees']>([])
 
   useEffect(() => {
     // TODO: fetch and papulate the employees array from:
@@ -33,11 +31,9 @@ const EmployeeProvider: React.FunctionComponent<any> = props => {
   // TODO: replace the 'div' element with the context Provider
   // component with a memoized object with a value for the employees array
   // that is only recalculated when the local employees state array changes
-  return (
-    <EmployeeContext.Provider value={{ employees, setEmployees }}>
-      { props.children }
-    </EmployeeContext.Provider>
-  )
+  return useMemo((): JSX.Element => {
+    return <EmployeeContext.Provider value={{ employees }}>{props.children}</EmployeeContext.Provider>
+  }, [employees, props.children])
 }
 
 export default EmployeeProvider

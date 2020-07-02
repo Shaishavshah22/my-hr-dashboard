@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 //TODO:
 // Create a custom React hook called useAuthentication that
@@ -11,10 +11,19 @@ import { useState } from 'react'
 // of the session
 //
 //Replace this function with the TODO described above
-function userAuthentication() {
-    const token = sessionStorage.getItem('token');
+function useAuthentication() {
+    const [token, setToken] = useState('');
 
-  return token;
+    useEffect(() => {
+        setToken(sessionStorage.getItem('token') || '')
+    }, [])
+
+    const logout = () => {
+        sessionStorage.removeItem('token');
+        setToken('');
+    }
+
+  return [token, logout];
 }
 
-export default userAuthentication
+export default useAuthentication
